@@ -6,7 +6,7 @@
 /*   By: evanheum <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 15:22:38 by evanheum          #+#    #+#             */
-/*   Updated: 2017/03/21 17:05:02 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:24:12 by blee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int checkline(char *str)
 	while (i < 4)
 	{
 		if (str[i] != '.' || str[i] != '#')
+			i++;
+		else
 			return (0);
-		i++;
 	}
-	if (str[i] != '\n')
-		return (0);
-	else
+	if (str[i] == '\n')
 		return (1);
+	return (0);
 }
 int checktet(char *str)
 {
@@ -52,12 +52,14 @@ int checktet(char *str)
 	return (1);
 
 }
+/*
 int main()
 {
-	char str[] = "....'\n'....'\n'....'\n'....'\n''\n'";
-	char str2[] = "....'\n'";
+	char str[] = "....\n....\n....\n....\n\n";
+	char str2[] = "....\n";
 
 	printf("%d", checkline(str2));
 
 	return (0);
 }
+*/
