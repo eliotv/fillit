@@ -12,28 +12,22 @@
 
 #include "./libft/libft.h"
 
-char	**create_board(int size)
+char    **create_board(int size)
 {
-	char **board;
-	int row;
-	int col;
-
-	row = 0;
-	col = 0;
-	if (!(board = (char**)malloc(sizeof(char**) * size)))
-		return (NULL);
-	while (row < size)
-	{
-		col = 0;
-		if (!(board[row] = ft_strnew(size)))
-			return (NULL);
-		while (col < size)
-		{
-			board[row][col] = '.';
-			col++;
-		}
-		board[row][col] = '\0';
-		row++;
-	}
-	return (board);
+    char    **board;
+    char    *row;
+    int     i;
+    i = 0;
+    if (!(board = (char**)malloc(sizeof(char**) * (size + 1))))
+        return (NULL);
+    row = ft_strnew(size);
+    ft_memeset(row, '.', size);
+    while (i < size)
+    {
+        board[i] = ft_strnew(size);
+        ft_strcpy(board[i], row);
+        i++;
+    }
+    board[i] = '\0';
+    return (board);
 }

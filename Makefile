@@ -12,7 +12,9 @@
 
 NAME = fillit
 CFLAG = -Wall -Wextra -Werror
-SRC = 
+SRC = create_board.c \
+	  ft_count_tet.c \
+	  main.c \
 
 OBJ = $(SRC:.c=.o)
 

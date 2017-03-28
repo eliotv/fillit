@@ -30,7 +30,7 @@ int		checkline(char *str)
     return (0);
 }
 
-int checktet(char *str)
+int		checktet(char *str)
 {
 	int i;
 	int count;
@@ -54,9 +54,10 @@ int checktet(char *str)
 
 }
 
-int strcmp_tet(const char *str1, const char *str2)
+int		ft_strcmp_tet(const char *str1, const char *str2)
 {
-    while (*str1 && *str2 && *str1 == *str2) {
+    while (*str1 && *str2 && *str1 == *str2) 
+	{
         str1++;
         str2++;
         if (*str1 == '\n')
@@ -68,39 +69,60 @@ int strcmp_tet(const char *str1, const char *str2)
 
 }
 
-void	populate_valid(int i, const char *str)
+void	valid_tets(char **str)
 {
-	while (++i < 20)
-	{
-	ft_strcmp_tet(str, "###...#");
-	ft_strcmp_tet(str, ".#...#..##");
-	ft_strcmp_tets(str, "#...###");
-	ft_strcmp_tet(str, "##..#...#");
-	ft_strcmp_tet(str, "###.#");
-	ft_strcmp_tet(str, "##...#...#");
-	ft_strcmp_tet(str, "..#.###");
-	ft_strcmp_tet(str, "#...#...##");
-	ft_strcmp_tet(str, "###..#");
-	ft_strcmp_tet(str, ".#..##...#");
-	ft_strcmp_tet(str, ".#..###");
-	ft_strcmp_tet(str, "#...##..#");
-	ft_strcmp_tet(str, ".##.##");
-	ft_strcmp_tet(str, "#...##...#");
-	ft_strcmp_tet(str, "##..##");
-	ft_strcmp_tet(str, "#...#...#...#");
-	ft_strcmp_tet(str, "####");
-	ft_strcmp_tet(str, ".#..##..#");
-	ft_strcmp_tet(str, "##...##");
-	}
+	ft_strcpy(str[0], "###...#");
+	ft_strcpy(str[1], ".#...#..##");
+	ft_strcpy(str[2], "#...###");
+	ft_strcpy(str[3], "##..#...#");
+	ft_strcpy(str[4], "###.#");
+	ft_strcpy(str[5], "##...#...#");
+	ft_strcpy(str[6], "..#.###");
+	ft_strcpy(str[7], "#...#...##");
+	ft_strcpy(str[8], "###..#");
+	ft_strcpy(str[9], ".#..##...#");
+	ft_strcpy(str[10], ".#..###");
+	ft_strcpy(str[11], "#...##..#");
+	ft_strcpy(str[12], ".##.##");
+	ft_strcpy(str[13], "#...##...#");
+	ft_strcpy(str[14], "##..##");
+	ft_strcpy(str[15], "#...#...#...#");
+	ft_strcpy(str[16], "####");
+	ft_strcpy(str[17], ".#..##..#");
+	ft_strcpy(str[18], "##...##");
+	str[19] = NULL;
 }
-/*
+
+int cmp_tet_input(char *src)
+{
+	char **valid;
+	int		i;
+
+	i = -1;
+	valid = (char**)malloc(sizeof(char*) * 20);
+	while (++i < 19)
+		valid[i] = ft_strnew(15);
+	valid_tets(valid);
+	i = -1;
+	while (++i < 19)
+	{
+		if (ft_strcmp_tet(src, valid[i]))
+		{
+			ft_bzero(src, ft_strlen(src));
+			ft_strcpy(src, valid[i]);
+			return (1);
+		}
+	}
+	return (0);
+}
+
 int main()
 {
-	char str[] = "....\n....\n....\n....\n\n";
+	char str[] = "###.\n..#.\n....\n....\n\n";
 	char str2[] = "....\n";
 
-	printf("%d", checkline(str2));
+	printf("%d", cmp_tet_input(str));
 
 	return (0);
 }
-*/
+
