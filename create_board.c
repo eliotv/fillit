@@ -31,3 +31,18 @@ char    **create_board(int size)
     board[i] = '\0';
     return (board);
 }
+
+void	**free_board(char **board)
+{
+	int i;
+
+	i = 0;
+	while(board[i])
+	{
+		free(board[i]);
+		i++;
+	}
+	free(board);
+}
+
+char 
