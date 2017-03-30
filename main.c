@@ -41,12 +41,14 @@ int	main(int ac, char **av)
 {
 	char	*tet_str;
 	int		tet_count;
-
+	char	**tet_array;
 	tet_count = 0;
 	if (ac == 2)
 	{
 		tet_str = readfile(av[1], tet_count);
-		ft_scan(0, tet_count, tet_str);
+		if(check_tet_format(tet_str))
+			tet_array = ft_scan(0, tet_count, tet_str);
+
 	}
 	return (0);
 }

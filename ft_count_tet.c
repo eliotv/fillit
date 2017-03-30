@@ -30,7 +30,7 @@ int		checkline(char *str)
     return (0);
 }
 
-int		checktet(char *str)
+int		check_tet(char *str)
 {
 	int i;
 	int count;

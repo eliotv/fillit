@@ -23,4 +23,84 @@ char ft_scan(int row, int tet_count, char **tet_array)
 			row++;
 		}
 	}
+	return (char tet_array);
 }
+
+int check_tet_format(char *str)
+{
+	while (*str)
+	{	
+		if(!check_tet(str))
+			return (0);
+		str = str + 21;
+	}
+	return (1);
+}
+
+int check_board(char **board, char *str int row, int col)
+{
+	int i;
+	int tmp_col;
+
+	i =0;
+	tmp_col = col;
+	while (str[i])
+	{
+		if (i % 4 == 0)
+		{
+			row++;
+			tmp_col = col;
+		}
+		if (*str < 0)
+			return (0);
+		if(board[row][col] != '.' && (str[i] >= 'A' && str[i] <= 'Z'))
+			return (0);
+		i++;
+		col++;
+	}
+	return (1)
+}
+
+char put_tet(char **board, char *str, int row, int col)
+{
+	int i;
+	int tmp_col;
+
+	i = 0;
+	tmp_col = col;
+	while (*str)
+	{
+		if (i % 4 == 0)
+		{
+			row++;
+			tmp_col = col;
+		}
+		if (*str >= 'A' && *str <= 'Z')
+		{
+			board[row][tmp_col] = *str;
+		}
+		i++;
+		tmp_col;
+	}
+	return (1)
+}
+
+char remove_tet(char **board, char *str, int row, int col)
+{
+	int i;
+
+	i = 0;
+	while (*str == '.')
+		i++;
+	while (*str)
+	{
+		if (i % 4 == 0)
+		{
+			row++;
+			col -= 4;
+		}
+		if ((board[row][col] >= 'A' && board[row][col] <= 'Z') && (str[i] >= 'A' && str[i] <= 'Z' ))
+			board[row][col] = '.';
+		i++;
+		col++;
+	}
