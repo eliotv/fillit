@@ -21,7 +21,7 @@ char    **create_board(int size)
     if (!(board = (char**)malloc(sizeof(char**) * (size + 1))))
         return (NULL);
     row = ft_strnew(size);
-    ft_memeset(row, '.', size);
+    ft_memset(row, '.', size);
     while (i < size)
     {
         board[i] = ft_strnew(size);

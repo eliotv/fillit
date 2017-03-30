@@ -40,16 +40,14 @@ int check_tet_format(char *str)
 int		check_board(char **board, char *str int row, int col)
 {
 	int i;
-	int tmp_col;
 
-	i =0;
-	tmp_col = col;
+	i = 0;
 	while (str[i])
 	{
 		if (i % 4 == 0)
 		{
 			row++;
-			tmp_col = col;
+			col -= 4;
 		}
 		if (*str < 0)
 			return (0);
@@ -61,36 +59,27 @@ int		check_board(char **board, char *str int row, int col)
 	return (1)
 }
 
-char	put_tet(char **board, char *str, int row, int col)
+void	put_tet(char **board, char *str, int row, int col)
 {
 	int i;
-	int tmp_col;
 
 	i = 0;
-	tmp_col = col;
-	while (*str)
+	while (str[i])
 	{
-		if (i % 4 == 0)
+		if ((i % 4 == 0) && i)
 		{
 			row++;
-			tmp_col = col;
+			col -= 4;
 		}
 		if (*str >= 'A' && *str <= 'Z')
-		{
-			board[row][tmp_col] = *str;
-		}
+			board[row][col] = str[i];
 		i++;
-		tmp_col;
+		col++;
 	}
-	return (1)
 }
 
-void	remove_tet(char **board, char *str, int row, int col)
+void	remove_tet(char **board, char c, int row, int col)
 {
-	int i;
-	char c;
-
-	i = 0;
 	while (board[row])
 	{
 		while (board[row][col])
