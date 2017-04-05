@@ -15,6 +15,15 @@ CFLAG = -Wall -Wextra -Werror
 SRC = create_board.c \
 	  ft_count_tet.c \
 	  main.c \
+	  check_format.c \
+	  recursion.c \
+	  valid_tet.c \
+	  ft_solve.c \
+
+
+FIL = fillit.h
+
+LIB = libft
 
 OBJ = $(SRC:.c=.o)
 
@@ -23,13 +32,17 @@ all: $(NAME)
 $(OBJ): %.o: %.c
 	@gcc -c $(CFLAG) $< -o $@
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
+$(NAME): 
+	@make -C $(LIB) re
+	@ gcc $(CFLAG) -L  $(LIB) -lft *.c -I $(LIB) -I $(FIL) -o $(NAME)
 
 clean:
-	@rm -f $(OBJ)
+	@make -C $(LIB) clean
 
 fclean: clean
-	@rm -f $(NAME)
+	@make -C $(LIB) fclean
+	@bin/rm -f $(NAME)
 
 re: fclean all
+
+.MCM: all clean fclean re
