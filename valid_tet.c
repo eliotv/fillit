@@ -1,31 +1,30 @@
 #include "libft/libft.h"
 
-int     ft_strcmp_tet(const char *str1, const char *str2)
+int		ft_strcmp_tet(const char *str1, const char *str2)
 {
-    while (*str1 && *str2 && *str1 == *str2)
-    {
-        str1++;
-        str2++;
-        if (*str1 == '\n')
-            str1++;
-        if (*str2 == '\0')
-            return (1);
-    }
-    return (0);
-
+	while (*str1 && *str2 && *str1 == *str2)
+	{
+		str1++;
+		str2++;
+		if (*str1 == '\n')
+			str1++;
+		if (*str2 == '\0')
+			return (1);
+	}
+	return (0);
 }
 
-int check_valid(char *src, char **valid)
+int		check_valid(char *src, char **valid)
 {
-    int     i;
+	int     i;
 
-    i = -1;
-    while (++i < 19)
-    {
-        if (ft_strcmp_tet(src, valid[i]))
-            return (i);
-    }
-    return (-1);
+	i = -1;
+	while (++i < 19)
+	{
+		if (ft_strcmp_tet(src, valid[i]))
+			return (i);
+	}
+	return (-1);
 }
 
 char	**ft_scan(int tet_count, char *str, char **valid)

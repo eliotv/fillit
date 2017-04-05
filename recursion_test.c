@@ -1,3 +1,5 @@
+#include "fillit.h""
+
 int		recursion(char **board, char **valid, int row, int col)
 {
 	if (!*valid)

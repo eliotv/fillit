@@ -15,19 +15,19 @@
 
 int		checkline(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (i < 4)
-    {
-        if (str[i] == '.' || str[i] == '#')
-            i++;
-        else
-            return (0);
-    }
-    if (str[i] == '\n')
-        return (1);
-    return (0);
+	i = 0;
+	while (i < 4)
+	{
+		if (str[i] == '.' || str[i] == '#')
+			i++;
+		else
+			return (0);
+	}
+	if (str[i] == '\n')
+		return (1);
+	return (0);
 }
 
 int		check_tet(char *str)
@@ -93,27 +93,17 @@ void	valid_tets(char **str)
 	str[19] = NULL;
 }
 
-int cmp_tet_input(char *src)
+int		check_valid(char *src, char **valid)
 {
-	char **valid;
 	int		i;
 
-	i = -1;
-	valid = (char**)malloc(sizeof(char*) * 20);
-	while (++i < 19)
-		valid[i] = ft_strnew(15);
-	valid_tets(valid);
 	i = -1;
 	while (++i < 19)
 	{
 		if (ft_strcmp_tet(src, valid[i]))
-		{
-			ft_bzero(src, ft_strlen(src));
-			ft_strcpy(src, valid[i]);
-			return (1);
-		}
+			return (i);
 	}
-	return (0);
+	return (-1);
 }
 
 int main()

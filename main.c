@@ -40,7 +40,7 @@ char	*readfile(char *file, int *tet_count)
 	return (tetstr);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	char	*tet_str;
 	int		tet_count;
@@ -50,10 +50,10 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		tet_str = readfile(av[1], &tet_count);
-		/*
+/*
 		if(check_tet_format(tet_str))
 			tet_array = ft_scan(tet_count, tet_str, valid);
-		*/
+*/
 		printf("%d", tet_count);
 	}
 	return (0);

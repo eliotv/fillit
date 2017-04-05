@@ -17,6 +17,7 @@ char	**create_board(int size)
 	char	**board;
 	char	*row;
 	int		i;
+
 	i = 0;
 	if (!(board = (char**)malloc(sizeof(char**) * (size + 1))))
 		return (NULL);
@@ -37,7 +38,7 @@ void	**free_board(char **board)
 	int i;
 
 	i = 0;
-	while(board[i])
+	while (board[i])
 	{
 		free(board[i]);
 		i++;
@@ -69,7 +70,7 @@ void	valid_tets(char **str)
 	str[19] = NULL;
 }
 
-char	**set_valid()
+char	**set_valid(void)
 {
 	char	**valid;
 	int		i;
