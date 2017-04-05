@@ -1,18 +1,18 @@
 int		checkline(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (i < 4)
-    {
-        if (str[i] == '.' || str[i] == '#')
-            i++;
-        else
-            return (0);
-    }
-    if (str[i] == '\n')
-        return (1);
-    return (0);
+	i = 0;
+	while (i < 4)
+	{
+		if (str[i] == '.' || str[i] == '#')
+			i++;
+		else
+			return (0);
+	}
+	if (str[i] == '\n')
+		return (1);
+	return (0);
 }
 
 int		check_tet(char *str)
@@ -38,11 +38,11 @@ int		check_tet(char *str)
 	return (0);
 }
 
-int check_tet_format(char *str)
+int		check_tet_format(char *str)
 {
 	while (*str)
 	{
-		if(!check_tet(str))
+		if (!check_tet(str))
 			return (0);
 		str = str + 21;
 	}
