@@ -21,7 +21,7 @@ int		recursion(char **board, char **valid, int row, int col)
 		}
 		row++;
 	}
-	return (0);
+	return (1);
 }
 
 char	**loop_recursion(char **board, char **valid, int size)
