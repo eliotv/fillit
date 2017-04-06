@@ -16,7 +16,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-char	*readfile(char *file, int *tet_count)
+char	*readfile(char *file)
 {
 	int		fd;
 	int		ret;
@@ -25,36 +25,49 @@ char	*readfile(char *file, int *tet_count)
 	tetstr = ft_strnew(546);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_putstr("open() error\n");
 		return (NULL);
-	}
 	ret = read(fd, tetstr, 545);
 	tetstr[ret] = '\0';
-	*tet_count = (ret + 1) / 21;
 	if (close(fd) == -1)
-	{
-		ft_putstr("close() error\n");
 		return (NULL);
-	}
 	return (tetstr);
+}
+
+char	**call_reader(char *file, int *size)
+{
+	char	*tet_str;
+	char	**tet_array;
+	char	**valid;
+
+	valid = set_valid();
+	tet_str = readfile(file);
+	*size = ft_scan(tet_count(tet_str));
+	if (check_tet_format(tet_str))
+		tet_array = ft_scan(*size, tet_str, valid);
+	return (tet_array);
+}
+
+char	**solve_board(char **tet_array, int size)
+{
+	char	**board;
+
+	board = create_board(size);
+	loop_recursion(board, tet_array, size);
+	return (board);
 }
 
 int		main(int ac, char **av)
 {
-	char	*tet_str;
-	int		tet_count;
 	char	**tet_array;
+	char	**board;
+	int		size;
 
-	tet_count = 0;
+	size = 0;
 	if (ac == 2)
 	{
-		tet_str = readfile(av[1], &tet_count);
-/*
-		if(check_tet_format(tet_str))
-			tet_array = ft_scan(tet_count, tet_str, valid);
-*/
-		printf("%d", tet_count);
+		tet_array = call_reader(av[1], size);
+		board = solve_board(tet_array, size);
+		print_board(board);
 	}
 	return (0);
 }
