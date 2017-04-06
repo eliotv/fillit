@@ -48,3 +48,8 @@ int		check_tet_format(char *str)
 	}
 	return (1);
 }
+
+int tet_count(char *str)
+{
+	return ((ft_strlen(str) + 1) / 21);
+}
