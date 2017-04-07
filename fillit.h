@@ -24,5 +24,6 @@ char	*readfile(char *file);
 char	**call_reader(char *file, int *size);
 char	**solve_board(char **tet_array, int size);
 int	tet_counter(char *str);
+char *set_letter(char *str, int j);
 
 #endif

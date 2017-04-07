@@ -1,4 +1,5 @@
-# **************************************************************************** #
+#
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -16,7 +17,6 @@ CFLAG = gcc -Wall -Wextra -Werror
 
 SRC = check_format.c \
       create_board.c \
-      ft_count_tet.c \
       ft_solve.c \
       main.c \
       recursion_test.c \
@@ -37,8 +37,8 @@ clean:
 	@make -C $(LIBDIR) clean
 
 fclean: clean
-	@make -C $(LIB) fclean
-	@bin/rm -f $(NAME)
+	@make -C $(LIBDIR) fclean
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 
