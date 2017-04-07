@@ -1,6 +1,6 @@
-#include "./libft/libft.h"
+#include "fillit.h"
 
-int		check_board(char **board, char *str int row, int col)
+int	check_board(char **board, char *str, int row, int col)
 {
 	int i;
 
@@ -21,7 +21,7 @@ int		check_board(char **board, char *str int row, int col)
 		i++;
 		col++;
 	}
-	return (1)
+	return (1);
 }
 
 void	put_tet(char **board, char *str, int row, int col)

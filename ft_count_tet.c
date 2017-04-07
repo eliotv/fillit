@@ -6,12 +6,11 @@
 /*   By: evanheum <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 15:22:38 by evanheum          #+#    #+#             */
-/*   Updated: 2017/03/23 19:39:08 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/04/06 15:40:22 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include <stdio.h>
 
 int		checkline(char *str)
 {
@@ -105,14 +104,3 @@ int		check_valid(char *src, char **valid)
 	}
 	return (-1);
 }
-
-int main()
-{
-	char str[] = "###.\n..#.\n....\n....\n\n";
-	char str2[] = "....\n";
-
-	printf("%d", cmp_tet_input(str));
-
-	return (0);
-}
-

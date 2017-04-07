@@ -6,38 +6,35 @@
 #    By: evanheum <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/21 14:43:34 by evanheum          #+#    #+#              #
-#    Updated: 2017/03/21 14:48:54 by evanheum         ###   ########.fr        #
+#*   Updated: 2017/04/06 15:30:02 by evanheum         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
-CFLAG = -Wall -Wextra -Werror
-SRC = create_board.c \
-	  ft_count_tet.c \
-	  main.c \
-	  check_format.c \
-	  recursion.c \
-	  valid_tet.c \
-	  ft_solve.c \
 
+CFLAG = gcc -Wall -Wextra -Werror
 
-FIL = fillit.h
+SRC = check_format.c \
+      create_board.c \
+      ft_count_tet.c \
+      ft_solve.c \
+      main.c \
+      recursion_test.c \
+      valid_tet.c \
 
-LIB = libft
+FILH = fillit.h
 
-OBJ = $(SRC:.c=.o)
+LIBDIR = libft
+
 
 all: $(NAME)
 
-$(OBJ): %.o: %.c
-	@gcc -c $(CFLAG) $< -o $@
-
 $(NAME): 
-	@make -C $(LIB) re
-	@ gcc $(CFLAG) -L  $(LIB) -lft *.c -I $(LIB) -I $(FIL) -o $(NAME)
+	@make -C $(LIBDIR) re
+	@$(CFLAG) -L $(LIBDIR) -lft $(SRC) -I $(LIBDIR) -I $(FILH) -o $(NAME)
 
 clean:
-	@make -C $(LIB) clean
+	@make -C $(LIBDIR) clean
 
 fclean: clean
 	@make -C $(LIB) fclean

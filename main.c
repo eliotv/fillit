@@ -6,11 +6,11 @@
 /*   By: blee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:38:05 by blee              #+#    #+#             */
-/*   Updated: 2017/03/23 18:59:45 by blee             ###   ########.fr       */
+/*   Updated: 2017/04/06 18:46:03 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "fillit.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -38,10 +38,11 @@ char	**call_reader(char *file, int *size)
 	char	*tet_str;
 	char	**tet_array;
 	char	**valid;
+	int	tet_count;
 
 	valid = set_valid();
 	tet_str = readfile(file);
-	*size = ft_scan(tet_count(tet_str));
+	*size = ft_scan(tet_count, tet_str, valid);
 	if (check_tet_format(tet_str))
 		tet_array = ft_scan(*size, tet_str, valid);
 	return (tet_array);

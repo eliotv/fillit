@@ -1,3 +1,6 @@
+#include "fillit.h"
+#include <stdio.h>
+
 int		checkline(char *str)
 {
 	int i;
@@ -51,5 +54,9 @@ int		check_tet_format(char *str)
 
 int tet_count(char *str)
 {
-	return ((ft_strlen(str) + 1) / 21);
+	int i;
+
+	i = ft_strlen(str);
+	i = i / 21;
+	return (i);
 }

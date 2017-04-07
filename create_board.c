@@ -6,7 +6,7 @@
 /*   By: blee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 15:30:16 by blee              #+#    #+#             */
-/*   Updated: 2017/03/24 17:20:41 by blee             ###   ########.fr       */
+/*   Updated: 2017/04/06 18:45:07 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ char	**create_board(int size)
 		ft_strcpy(board[i], row);
 		i++;
 	}
-	board[i] = '\0';
+	board[i] = NULL;
 	return (board);
 }
 
-void	**free_board(char **board)
+void	free_board(char **board)
 {
 	int i;
 
