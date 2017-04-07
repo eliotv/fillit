@@ -52,7 +52,7 @@ int		check_tet_format(char *str)
 	return (1);
 }
 
-int tet_count(char *str)
+int tet_counter(char *str)
 {
 	int i;
 

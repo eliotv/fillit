@@ -6,7 +6,7 @@
 /*   By: blee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:38:05 by blee              #+#    #+#             */
-/*   Updated: 2017/04/06 18:46:03 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/04/06 18:58:17 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ char	**call_reader(char *file, int *size)
 	char	**valid;
 	int	tet_count;
 
+	tet_count = tet_counter(tet_str);
 	valid = set_valid();
 	tet_str = readfile(file);
-	*size = ft_scan(tet_count, tet_str, valid);
+	*size = ft_scan(tet_counter, tet_str, valid);
 	if (check_tet_format(tet_str))
 		tet_array = ft_scan(*size, tet_str, valid);
 	return (tet_array);
