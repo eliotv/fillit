@@ -85,9 +85,12 @@ int		main(int ac, char **av)
 	{
 		tet_array = call_reader(av[1], &size);
 		print_board(tet_array);
-
+		ft_putchar('\n');
+		//board = create_board(3);
+		//printf("%d\n", check_board(board, tet_array[0], 0, 0));
 		board = solve_board(tet_array, size);
 		print_board(board);
+		//board = NULL;
 	}
 	return (0);
 }

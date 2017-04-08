@@ -62,9 +62,9 @@ char    **ft_scan(int tet_count, char** valid, char *tet_str)
 	char    **tet_array;
 	
 	i = 0;
-	if(!(tet_array = (char**)malloc(sizeof(char*) * tet_count)))
+	if(!(tet_array = (char**)malloc(sizeof(char*) * (tet_count + 1))))
 		return (NULL);
-	while (tet_count--)
+	while (i < tet_count)
 	{
 		tet_id = check_valid(tet_str, valid);
 		if (tet_id == -1)

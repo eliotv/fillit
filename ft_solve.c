@@ -14,7 +14,7 @@ int	check_board(char **board, char *str, int row, int col)
 			row++;
 			col -= 4;
 		}
-		if (*str < 0)
+		if (!board[row])
 			return (0);
 		if(board[row][col] != '.' && (str[i] >= 'A' && str[i] <= 'Z'))
 			return (0);
