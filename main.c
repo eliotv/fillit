@@ -38,14 +38,13 @@ char	**call_reader(char *file, int *size)
 	char	*tet_str;
 	char	**tet_array;
 	char	**valid;
-	int	tet_count;
 
 	tet_str = readfile(file);
-	tet_count = tet_counter(tet_str);
+	*size = tet_counter(tet_str);
 	valid = set_valid();
-	tet_array = ft_scan(tet_count, tet_str, valid);
+	tet_array = NULL;
 	if (check_tet_format(tet_str))
-		tet_array = ft_scan(*size, tet_str, valid);
+		tet_array = ft_scan(*size, valid, tet_str);
 	return (tet_array);
 }
 
@@ -58,6 +57,18 @@ char	**solve_board(char **tet_array, int size)
 	return (board);
 }
 
+void	print_board(char** board)
+{
+	int i = 0;
+
+	while (board[i])
+	{
+		ft_putstr(board[i]);
+		ft_putchar('\n');
+		i++;
+	}
+}
+
 int		main(int ac, char **av)
 {
 	char	**tet_array;
@@ -65,20 +76,16 @@ int		main(int ac, char **av)
 	int		size;
 
 	size = 0;
-	printf("0\n");
 	if (ac != 2)
 	{
 		ft_putstr("usage: ./fillit [source_file]\n");
 		return (0);
 	}
+	else if (ac == 2)
 	{
-		printf("1\n");
 		tet_array = call_reader(av[1], &size);
-		printf("2\n");
+		print_board(tet_array);
 		board = solve_board(tet_array, size);
-		printf("3\n");
-		create_board(size);
 	}
-	printf("4\n");
 	return (0);
 }

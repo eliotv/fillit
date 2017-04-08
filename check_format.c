@@ -57,6 +57,6 @@ int tet_counter(char *str)
 	int i;
 
 	i = ft_strlen(str);
-	i = i / 21;
+	i = (i + 1) / 21;
 	return (i);
 }

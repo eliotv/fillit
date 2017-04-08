@@ -1,18 +1,29 @@
 #include "fillit.h"
 
-int     ft_strcmp_tet(const char *str1, const char *str2)
+int     ft_strcmp_tet(const char *big, const char *little)
 {
-    while (*str1 && *str2 && *str1 == *str2)
-    {
-        str1++;
-        str2++;
-        if (*str1 == '\n')
-            str1++;
-        if (*str2 == '\0')
-            return (1);
-    }
-    return (0);
+	int	i;
+	int	j;
+	int max;
 
+	i = 0;
+	max = 21;
+	if (!little)
+		return (0);
+	while (i < max)
+	{
+		j = 0;
+		while (big[i + j] == little[j])
+		{
+			if (!little[j + 1])
+				return (1);
+			j++;
+			if (big[i + j] == '\n')
+				i++;
+		}
+		i++;
+	}
+    return (0);
 }
 
 int check_valid(char *src, char **valid)
@@ -28,41 +39,13 @@ int check_valid(char *src, char **valid)
     return (-1);
 }
 
-char	**ft_scan(int tet_count, char *str, char **valid)
-{
-	char	**tet_array;
-	int		i;
-	int		row;
-
-	i = 0;
-	row = 0;
-	if(!(tet_array = (char**)malloc(sizeof(char*) * tet_count + 1)))
-		return (NULL);
-	while (tet_count--)
-	{
-		i = check_valid(str, valid);
-		if (i != -1)
-		{
-			if (!(tet_array[row] = ft_strnew(15)))
-				return (NULL);
-			ft_strcpy(tet_array[row], set_letter(valid[i], row));
-			row++;
-		}
-		else
-			return (NULL);
-		str += 21;
-	}
-	tet_array[row] = NULL;
-	return (tet_array);
-}
-
 char *set_letter(char *str, int j)
 {
-	int i;
-	char c;
+	int		i;
+	char	c;
 
-	c = 'A' + j;
 	i = 0;
+	c = 'A' + j;
 	while (str[i])
 	{
 		if(str[i] == '#')
@@ -70,4 +53,32 @@ char *set_letter(char *str, int j)
 		i++;
 	}
 	return (str);
+}
+
+char    **ft_scan(int tet_count, char** valid, char *tet_str)
+{
+	int     i;
+	int     tet_id;
+	char    **tet_array;
+	
+	i = 0;
+	if(!(tet_array = (char**)malloc(sizeof(char*) * tet_count)))
+		return (NULL);
+	while (tet_count--)
+	{
+		tet_id = check_valid(tet_str, valid);
+		if (tet_id == -1)
+			return (NULL);
+		else
+		{
+			if (!(tet_array[i] = ft_strnew(15)))
+				return (NULL);
+			ft_strcpy(tet_array[i], valid[tet_id]);
+			set_letter(tet_array[i], i);
+			i++;
+		}
+		tet_str += 21;
+	}
+	tet_array[i] = NULL;
+	return (tet_array);
 }
