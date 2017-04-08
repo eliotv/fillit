@@ -1,5 +1,6 @@
 #include "fillit.h"
 
+
 int		recursion(char **board, char **tet_array, int row, int col)
 {
 	if (!*tet_array)
@@ -32,5 +33,6 @@ char	**loop_recursion(char **board, char **tet_array, int size)
 		free_board(board);
 		board = create_board(size);
 	}
+	print_board(board);
 	return (board);
 }

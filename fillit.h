@@ -27,4 +27,6 @@ int		tet_counter(char *str);
 char	*set_letter(char *str, int j);
 int		check_valid(char *src, char **valid);
 
+void	print_board(char** board);
+
 #endif

@@ -53,7 +53,7 @@ char	**solve_board(char **tet_array, int size)
 	char	**board;
 
 	board = create_board(size);
-	loop_recursion(board, tet_array, size);
+	board = loop_recursion(board, tet_array, size);
 	return (board);
 }
 
@@ -85,7 +85,9 @@ int		main(int ac, char **av)
 	{
 		tet_array = call_reader(av[1], &size);
 		print_board(tet_array);
+
 		board = solve_board(tet_array, size);
+		print_board(board);
 	}
 	return (0);
 }

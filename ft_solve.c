@@ -9,7 +9,7 @@ int	check_board(char **board, char *str, int row, int col)
 		return (0);
 	while (str[i])
 	{
-		if (i % 4 == 0)
+		if ((i % 4 == 0) && i)
 		{
 			row++;
 			col -= 4;
