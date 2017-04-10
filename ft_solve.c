@@ -36,8 +36,10 @@ void	put_tet(char **board, char *str, int row, int col)
 			row++;
 			col -= 4;
 		}
-		if (*str >= 'A' && *str <= 'Z')
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
 			board[row][col] = str[i];
+		}
 		i++;
 		col++;
 	}

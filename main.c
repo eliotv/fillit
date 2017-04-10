@@ -88,6 +88,8 @@ int		main(int ac, char **av)
 		ft_putchar('\n');
 		//board = create_board(3);
 		//printf("%d\n", check_board(board, tet_array[0], 0, 0));
+		//put_tet(board, tet_array[0], 0, 0);
+
 		board = solve_board(tet_array, size);
 		print_board(board);
 		//board = NULL;

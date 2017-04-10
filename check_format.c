@@ -1,5 +1,4 @@
 #include "fillit.h"
-#include <stdio.h>
 
 int		checkline(char *str)
 {
