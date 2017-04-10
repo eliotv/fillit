@@ -81,18 +81,15 @@ int		main(int ac, char **av)
 		ft_putstr("usage: ./fillit [source_file]\n");
 		return (0);
 	}
-	else if (ac == 2)
+	if (!(tet_array = call_reader(av[1], &size)))
 	{
-		tet_array = call_reader(av[1], &size);
-		print_board(tet_array);
-		ft_putchar('\n');
-		//board = create_board(3);
-		//printf("%d\n", check_board(board, tet_array[0], 0, 0));
-		//put_tet(board, tet_array[0], 0, 0);
-
-		board = solve_board(tet_array, size);
-		print_board(board);
-		//board = NULL;
+		ft_putstr("error\n");
+			return (0);
 	}
+	//tet_array = call_reader(av[1], &size);
+	print_board(tet_array);
+	ft_putchar('\n');
+	board = solve_board(tet_array, size);
+	print_board(board);
 	return (0);
 }
