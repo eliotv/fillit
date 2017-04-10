@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid_tet.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.us.org>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/10 16:48:37 by evanheum          #+#    #+#             */
+/*   Updated: 2017/04/10 16:48:51 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int     ft_strcmp_tet(const char *big, const char *little)
@@ -60,7 +72,7 @@ char    **ft_scan(int tet_count, char** valid, char *tet_str)
 	int     i;
 	int     tet_id;
 	char    **tet_array;
-	
+
 	i = 0;
 	if(!(tet_array = (char**)malloc(sizeof(char*) * (tet_count + 1))))
 		return (NULL);
