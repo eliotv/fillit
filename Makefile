@@ -13,7 +13,8 @@
 
 NAME = fillit
 
-CFLAG = gcc -Wall -Wextra -Werror
+CFLAG += -Wall -Wextra -Werror
+CFLAG += -I libft/
 
 SRC = check_format.c \
       create_board.c \
@@ -22,24 +23,29 @@ SRC = check_format.c \
       recursion_test.c \
       valid_tet.c \
 
-FILH = fillit.h
+OBJ = $(SRC:.c=.o) 
 
-LIBDIR = libft
+LIBDIR = libft/libft.a
 
+.PHONY = all clean fclean clean re
 
 all: $(NAME)
 
-$(NAME): 
-	@make -C $(LIBDIR) re
-	@$(CFLAG) -L $(LIBDIR) -lft $(SRC) -I $(LIBDIR) -I $(FILH) -o $(NAME)
+$(OBJ): %.o: %.c
+	@gcc -c $(CFLAGS) $< -o $@
+
+$(LIBDIR):
+	@make -C libft
+
+$(NAME): $(LIBDIR) $(OBJ)
+	@gcc $(OBJ) $(LIBDIR) -o $(NAME)
 
 clean:
-	@make -C $(LIBDIR) clean
+	@rm -rf $(OBJ)
+	@make -C libft clean
 
 fclean: clean
-	@make -C $(LIBDIR) fclean
-	@/bin/rm -f $(NAME)
+	@rm -rf $(NAME)
+	@make -C libft fclean
 
 re: fclean all
-
-.MCM: all clean fclean re

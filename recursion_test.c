@@ -12,7 +12,6 @@
 
 #include "fillit.h"
 
-
 int		recursion(char **board, char **tet_array, int row, int col)
 {
 	if (!*tet_array)
@@ -25,10 +24,10 @@ int		recursion(char **board, char **tet_array, int row, int col)
 			if (check_board(board, *tet_array, row, col))
 			{
 				put_tet(board, *tet_array, row, col);
-				//print_board(board);
-				//ft_putchar('\n');
-				if (recursion (board, (tet_array + 1), 0, 0))
-					remove_tet(board, *tet_array, 0 , 0);
+				if (recursion(board, (tet_array + 1), 0, 0))
+				{
+					remove_tet(board, *tet_array, 0, 0);
+				}
 				else
 					return (0);
 			}

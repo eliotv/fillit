@@ -26,7 +26,8 @@ char	*readfile(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
-	ret = read(fd, tetstr, 545);
+	if (!(ret = read(fd, tetstr, 545)))
+		return (NULL);
 	tetstr[ret] = '\0';
 	if (close(fd) == -1)
 		return (NULL);
@@ -39,7 +40,8 @@ char	**call_reader(char *file, int *size)
 	char	**tet_array;
 	char	**valid;
 
-	tet_str = readfile(file);
+	if (!(tet_str = readfile(file)))
+		return (NULL);
 	*size = tet_counter(tet_str);
 	valid = set_valid();
 	tet_array = NULL;
@@ -51,16 +53,19 @@ char	**call_reader(char *file, int *size)
 char	**solve_board(char **tet_array, int size)
 {
 	char	**board;
+	int		board_size;
 
-	board = create_board(size);
-	board = loop_recursion(board, tet_array, size);
+	board_size = set_boardsize(size);
+	board = create_board(board_size);
+	board = loop_recursion(board, tet_array, board_size);
 	return (board);
 }
 
-void	print_board(char** board)
+void	print_board(char **board)
 {
-	int i = 0;
+	int		i;
 
+	i = 0;
 	while (board[i])
 	{
 		ft_putstr(board[i]);
@@ -84,11 +89,8 @@ int		main(int ac, char **av)
 	if (!(tet_array = call_reader(av[1], &size)))
 	{
 		ft_putstr("error\n");
-			return (0);
+		return (0);
 	}
-	//tet_array = call_reader(av[1], &size);
-	print_board(tet_array);
-	ft_putchar('\n');
 	board = solve_board(tet_array, size);
 	print_board(board);
 	return (0);

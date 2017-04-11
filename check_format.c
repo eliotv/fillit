@@ -14,7 +14,7 @@
 
 int		checkline(char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < 4)
@@ -31,8 +31,8 @@ int		checkline(char *str)
 
 int		check_tet(char *str)
 {
-	int i;
-	int count;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -63,9 +63,9 @@ int		check_tet_format(char *str)
 	return (1);
 }
 
-int tet_counter(char *str)
+int		tet_counter(char *str)
 {
-	int i;
+	int		i;
 
 	i = ft_strlen(str);
 	i = (i + 1) / 21;
