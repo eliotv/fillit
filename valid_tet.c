@@ -12,11 +12,11 @@
 
 #include "fillit.h"
 
-int     ft_strcmp_tet(const char *big, const char *little)
+int		ft_strcmp_tet(const char *big, const char *little)
 {
-	int	i;
-	int	j;
-	int max;
+	int		i;
+	int		j;
+	int		max;
 
 	i = 0;
 	max = 21;
@@ -35,23 +35,23 @@ int     ft_strcmp_tet(const char *big, const char *little)
 		}
 		i++;
 	}
-    return (0);
+	return (0);
 }
 
-int check_valid(char *src, char **valid)
+int		check_valid(char *src, char **valid)
 {
-    int     i;
+	int		i;
 
-    i = -1;
-    while (++i < 19)
-    {
-        if (ft_strcmp_tet(src, valid[i]))
-            return (i);
-    }
-    return (-1);
+	i = -1;
+	while (++i < 19)
+	{
+		if (ft_strcmp_tet(src, valid[i]))
+			return (i);
+	}
+	return (-1);
 }
 
-char *set_letter(char *str, int j)
+char	*set_letter(char *str, int j)
 {
 	int		i;
 	char	c;
@@ -60,21 +60,21 @@ char *set_letter(char *str, int j)
 	c = 'A' + j;
 	while (str[i])
 	{
-		if(str[i] == '#')
+		if (str[i] == '#')
 			str[i] = c;
 		i++;
 	}
 	return (str);
 }
 
-char    **ft_scan(int tet_count, char** valid, char *tet_str)
+char	**ft_scan(int tet_count, char **valid, char *tet_str)
 {
-	int     i;
-	int     tet_id;
-	char    **tet_array;
+	int		i;
+	int		tet_id;
+	char	**tet_array;
 
 	i = 0;
-	if(!(tet_array = (char**)malloc(sizeof(char*) * (tet_count + 1))))
+	if (!(tet_array = (char**)malloc(sizeof(char*) * (tet_count + 1))))
 		return (NULL);
 	while (i < tet_count)
 	{

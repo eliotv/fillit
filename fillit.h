@@ -1,7 +1,7 @@
 #ifndef FILLIT_H
 # define FILLIT_H
-#include "libft/libft.h"
-#include <fcntl.h>
+# include "libft/libft.h"
+# include <fcntl.h>
 
 char	**create_board(int size);
 void	free_board(char **board);
@@ -17,7 +17,7 @@ int		check_tet_format(char *str);
 int		ft_strcmp_tet(const char *str1, const char *str2);
 void	valid_tets(char **str);
 int		cmp_tet_input(char *src);
-char	**ft_scan(int tet_count, char** valid, char *tet_str);
+char	**ft_scan(int tet_count, char **valid, char *tet_str);
 int		recursion(char **board, char **tet_array, int row, int col);
 char	**loop_recursion(char **board, char **tet_array, int size);
 char	*readfile(char *file);
@@ -26,7 +26,7 @@ char	**solve_board(char **tet_array, int size);
 int		tet_counter(char *str);
 char	*set_letter(char *str, int j);
 int		check_valid(char *src, char **valid);
-
-void	print_board(char** board);
+void	print_board(char **board);
+int		set_boardsize(int size);
 
 #endif

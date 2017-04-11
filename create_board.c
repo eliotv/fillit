@@ -87,3 +87,14 @@ char	**set_valid(void)
 	valid_tets(valid);
 	return (valid);
 }
+
+int		set_boardsize(int size)
+{
+	int		i;
+
+	i = 2;
+	size *= 4;
+	while (i * i < size)
+		i++;
+	return (i);
+}

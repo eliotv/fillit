@@ -12,9 +12,9 @@
 
 #include "fillit.h"
 
-int	check_board(char **board, char *str, int row, int col)
+int		check_board(char **board, char *str, int row, int col)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (!str)
@@ -28,7 +28,7 @@ int	check_board(char **board, char *str, int row, int col)
 		}
 		if (!board[row])
 			return (0);
-		if(board[row][col] != '.' && (str[i] >= 'A' && str[i] <= 'Z'))
+		if (board[row][col] != '.' && (str[i] >= 'A' && str[i] <= 'Z'))
 			return (0);
 		i++;
 		col++;
@@ -38,7 +38,7 @@ int	check_board(char **board, char *str, int row, int col)
 
 void	put_tet(char **board, char *str, int row, int col)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i])
